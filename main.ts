@@ -1,7 +1,11 @@
-import * as fs from "node:fs";
+import { mkdirSync, writeFileSync } from "node:fs";
 
-const entry = "A traffic jam is a hallway full of people all trying to squeeze through one door at once.\nIt works because both are too many things in too little space, but it leaves out that cars cannot politely shuffle sideways the way people can.";
+// Everyday Things, Two Lines: explain an everyday thing, then why the analogy works.
+const entry = [
+  "A traffic jam is like a straw full of marbles: too many cars trying to squeeze through one tiny opening at once.",
+  "The analogy works because both are about flow getting stuck, but it leaves out that drivers chose to be there, and marbles did not.",
+].join("\n");
 
-fs.mkdirSync("/output", { recursive: true });
-fs.writeFileSync("/output/entry.txt", entry, "utf8");
-console.log("wrote /output/entry.txt (" + entry.length + " chars)");
+mkdirSync("/output", { recursive: true });
+writeFileSync("/output/entry.txt", entry + "\n");
+console.log(entry);
